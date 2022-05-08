@@ -1,3 +1,39 @@
 .App {
   text-align: center;
 }
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  background-image: linear-gradient(to right,#672280, #A626D3);
+  color: white;
+  box-shadow: 0 3px 7.5px #00000034;
+}
+
+.navbar-main{
+  display: flex;
+}
+
+.navbar-img{
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-text{
+  margin: 0;
+  padding: 10px;
+}
+
+.nav-title{
+  font-size: 20px;
+  margin-left: 20px;
+  padding: 5px;
+}
+
+.nav-subtitle{
+  font-size: 15px;
+  font-weight: 700;
+}
