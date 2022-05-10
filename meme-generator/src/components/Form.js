@@ -3,15 +3,19 @@ import data from "../memesData"
 
 const Form = (props) => {
     const { buttonText } = props
-    const memesArray = data.data.memes;
-    const [ image, setImage ] = useState();
 
-    const randomIndex = Math.floor(Math.random() * memesArray.length)
+    const [ meme, setMeme ] = useState({
+        topText: "",
+        bottomText: "",
+        randomImage: "http://i.imgflip.com/1bij.jpg"
+    })
+    const [ allMemesImages, setAllMemesImages ] = useState(data.data.memes)
 
     const getImage = () => {
-        setImage(memesArray[randomIndex].url)
+        const randomIndex = Math.floor(Math.random() * allMemesImages.length)
+        setMeme(prevMeme => ({...prevMeme, randomImage: allMemesImages[randomIndex].url}))
     }
-
+ 
     return (
         <>
             <div className="meme-form">
@@ -20,7 +24,7 @@ const Form = (props) => {
                     <input type="text" placeholder="Lower text..." className="textbox"/>
                 </section>
                 <button type="submit" className="button" onClick={getImage}>{buttonText}</button>
-                <img src={image} className="meme-result" ></img>
+                <img src={meme.randomImage} alt="meme" className="meme-result" ></img>
             </div>
         </>
     )
