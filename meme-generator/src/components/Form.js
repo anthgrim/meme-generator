@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import data from "../memesData"
+import React, { useState, useEffect } from "react";
 
 const Form = (props) => {
     const { buttonText } = props
@@ -10,11 +9,20 @@ const Form = (props) => {
         randomImage: "http://i.imgflip.com/1bij.jpg"
     })
 
-    const [ allMemesImages, setAllMemesImages ] = useState(data.data.memes)
+    const [ allMemes, setAllMemes ] = useState([])
+
+    //Get data from API
+    useEffect(() => {
+        const url = "https://api.imgflip.com/get_memes"
+
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setAllMemes(data.data.memes))
+    }, [])
 
     const getImage = () => {
-        const randomIndex = Math.floor(Math.random() * allMemesImages.length)
-        setMeme(prevMeme => ({...prevMeme, randomImage: allMemesImages[randomIndex].url}))
+        const randomIndex = Math.floor(Math.random() * allMemes.length)
+        setMeme(prevMeme => ({...prevMeme, randomImage: allMemes[randomIndex].url}))
     }
 
     const handleChange = (event) => {
