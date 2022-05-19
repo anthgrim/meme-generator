@@ -4,8 +4,8 @@ const Form = (props) => {
     const { buttonText } = props
 
     const [ meme, setMeme ] = useState({
-        topText: "One does not simply",
-        bottomText: "Walk into Mordor",
+        topText: "",
+        bottomText: "",
         randomImage: "http://i.imgflip.com/1bij.jpg"
     })
 
